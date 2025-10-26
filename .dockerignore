@@ -1,0 +1,67 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+docker-compose.yaml
+
+# Documentation
+README.md
+CHANGELOG.md
+LICENSE
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Node.js
+node_modules
+npm-debug.log
+yarn-error.log
+.npm
+.yarn-integrity
+
+# Laravel specific
+.env
+.env.local
+.env.*.local
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+bootstrap/cache/*
+
+# Testing
+tests
+phpunit.xml
+.phpunit.result.cache
+
+# Development tools
+.php_cs.cache
+.php-cs-fixer.cache
+pint.json
+
+# Build artifacts
+public/hot
+public/storage
+public/build
+
+# Temporary files
+*.tmp
+*.temp
