@@ -23,7 +23,6 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
         mbstring \
         xml \
         ctype \
-        json \
         gd
 
 # Install Composer
