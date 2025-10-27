@@ -9,7 +9,11 @@ RUN apk add --no-cache \
     git \
     oniguruma-dev \
     libxml2-dev \
+    mysql-client \
+    mysql-dev \
     && docker-php-ext-install -j$(nproc) \
+        pdo \
+        pdo_mysql \
         mbstring \
         xml \
         ctype \
