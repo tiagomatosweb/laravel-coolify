@@ -3,29 +3,20 @@ FROM php:8.2-fpm-alpine
 # Install system dependencies and PHP extensions
 RUN apk add --no-cache \
     nginx \
-    sqlite \
-    sqlite-dev \
     curl \
     zip \
     unzip \
     git \
-    libpng-dev \
-    libjpeg-turbo-dev \
-    freetype-dev \
     oniguruma-dev \
     libxml2-dev \
     && docker-php-ext-install -j$(nproc) \
-        pdo \
-        pdo_sqlite \
         mbstring \
         xml \
         ctype \
     && rm -rf /var/cache/apk/*
 
-# Install GD extension
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd \
-    && apk del --no-cache git
+# Cleanup build dependencies
+RUN apk del --no-cache git
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -37,7 +28,7 @@ WORKDIR /var/www/html
 COPY composer.json composer.lock ./
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
 # Copy application code
 COPY . .
